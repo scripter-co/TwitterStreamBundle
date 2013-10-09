@@ -107,9 +107,9 @@ class Request implements RequestInterface
     {
         while(1)
         {
-            $fp = fsockopen("ssl://stream.twitter.com", 443, $errno, $errstr, 30);
-            if (!$fp){
-                echo "ERROR: Twitter Stream Error: failed to open socket";
+            $fp = fsockopen('ssl://stream.twitter.com', 443, $errno, $errstr, 30);
+            if(!$fp){
+                throw new \Exception('Twitter stream failed to open socket');
             }else{
 
                 fwrite($fp, $this->_buildRequest());
@@ -118,22 +118,21 @@ class Request implements RequestInterface
 
                 while(!feof($fp))
                 {
-                    $read   = array($fp);
-                    $write  = null;
+                    $read = array($fp);
+                    $write = null;
                     $except = null;
 
                     $res = stream_select($read, $write, $except, 600, 0);
-                    if(($res == false) || ($res == 0)){
+                    if($res === false || $res === 0){
                         break;
                     }
 
                     $json = fgets($fp);
 
-                    if (strncmp($json, 'HTTP/1.1', 8) == 0){
+                    if(strncmp($json, 'HTTP/1.1', 8) === 0){
                         $json = trim($json);
-                        if ($json != 'HTTP/1.1 200 OK'){
-                            echo 'ERROR: ' . $json . "\n";
-                            return false;
+                        if ($json !== 'HTTP/1.1 200 OK'){
+                            throw new \Exception('ERROR: ' . $json . "\n";
                         }
                     }
 
@@ -162,11 +161,9 @@ class Request implements RequestInterface
                     }
                 }
             }
-
             fclose($fp);
             sleep(10);
         }
-
         return;
     }
 };
