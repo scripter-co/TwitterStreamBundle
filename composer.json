@@ -1,0 +1,19 @@
+{
+    "name": "scripter-co/twitter-stream-bundle",
+    "description": "A Twitter Stream bundle for Symfony2",
+    "authors": [
+        {
+            "name": "scripter-co",
+            "email": "mail@scripter.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/framework-bundle": "~2.2",
+        "symfony/console": "~2.0"
+    },
+    "autoload": {
+        "psr-0": { "ScripterCo\\Bundle\\TwitterStreamBundle": "" }
+    },
+    "target-dir": "ScripterCo/Bundle/TwitterStreamBundle"
+}

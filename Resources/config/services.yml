@@ -1,0 +1,4 @@
+services:
+    scripterco_twitter_stream.request:
+        class: ScripterCo\Bundle\TwitterStreamBundle\Request\Request
+        arguments: [@event_dispatcher]
