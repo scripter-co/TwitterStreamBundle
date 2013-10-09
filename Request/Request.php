@@ -55,14 +55,6 @@ class Request implements RequestInterface
         
         return $this;
     }
-
-
-    private function process(array $_data)
-    {
-        print_r($_data);
-
-        return true;
-    }
     
     public function setKeywords($keywords)
     {
