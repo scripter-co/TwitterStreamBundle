@@ -72,13 +72,9 @@ class RequestEventHandler
 
     public function processTweet($request_event)
     {
-        $doctrine = $this->_container->get('doctrine');
-        
         $tweet_model = $request_event->getTweet();
-                
         // tweet id
         echo $tweet_model->get('id');
-        
         // user screen name
         echo $tweet_model->get('user')->get('screen_name')
     }
