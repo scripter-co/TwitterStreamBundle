@@ -132,7 +132,7 @@ class Request implements RequestInterface
                     if(strncmp($json, 'HTTP/1.1', 8) === 0){
                         $json = trim($json);
                         if ($json !== 'HTTP/1.1 200 OK'){
-                            throw new \Exception('ERROR: ' . $json . "\n";
+                            throw new \Exception('ERROR: ' . $json . "\n");
                         }
                     }
 
