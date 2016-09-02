@@ -137,8 +137,8 @@ class Request implements RequestInterface
                     }
 
                     if(($json !== false) && (strlen($json) > 0)){
-                        $tweet = json_decode($json);
-                        if($tweet){
+                        $tweet = json_decode($json, true);
+                        if($tweet && is_array($tweet)){
                             
                             $tweet_model = new TweetModel();
                             $user_model = new UserModel();
